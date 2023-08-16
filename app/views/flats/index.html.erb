@@ -1,13 +1,27 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Flats</h1>
+<h1>All our Flats</h1>
+<p>All <%= @flats.size %> flats.</p>
 
 <div id="flats">
   <% @flats.each do |flat| %>
+
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">
     <%= flat.name %>
-    <p>
-      <%= link_to "Show this flat", flat %>
+    </h5>
+    <p class="card-text">
+    <%= flat.address %><br>
+    $<%= flat.price_per_night %><br>
+    <%= flat.number_of_guests %>
     </p>
+      <%= link_to "More info", flat %>
+      <%= link_to "Edit", edit_flat_path(flat), :class => "text-warning" %>
+      <%= link_to "Remove", flat, data: {turbo_method: :delete}, :class => "text-danger" %>
+  </div>
+</div>
   <% end %>
 </div>
 
